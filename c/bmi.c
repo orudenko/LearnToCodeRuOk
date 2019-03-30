@@ -7,8 +7,8 @@ float height;
 float weight;
 
 // объявляем функцию вычисления bmi
-float bmi_calc(weight,height){
-    return weight / height;
+float bmi_calc(float weight, float height){
+    return weight / (height * height);
 }
 
 int main(){
@@ -27,23 +27,33 @@ scanf("%f", &weight);
 
 //Отображаем принятое в целях отладки
 
-printf("\n");
+printf("\nрост:");
 printf("%f", height);
 printf("\n");
 printf("%f", weight);
 printf("\n");
 
-//объявляем переменную bmi
-float bmi = bmi_calc(weight,height);
+//объявляем переменные bmi_ok, bmi_low, bmi_high
+int bmi_ok = bmi_calc(weight,height) < 25 && bmi_calc(weight,height) >=18.5;
+int bmi_low = bmi_calc(weight,height) < 18.5;
+int bmi_high = bmi_calc(weight,height) >= 25;
 
-printf("%f", bmi);
+printf("%f", bmi_calc(weight,height));
 printf("\n");
 
+//начинаем цикл
 
-//int pribory = ruoksum(a, b);
+if /* условие: bmi низкий */ (bmi_low == 1) {
+printf("Я должен написать, что вес низкий.\n");
 
-//пробуем напечатать значение, возвращаемое функцией ruoksum
-//printf("Приборы: ");
-//printf("%d", pribory);
-//printf("\n");
+} 
+else if /* условие: bmi больше 25 */(bmi_high == 1) {
+printf("Я должен написать, что вес высокий.\n");
+}
+else if /* условие:  bmi нормальный - от 18,5 до 24,99 */(bmi_ok == 1){
+printf("Я должен написать, что вес нормальный.\n");
+}
+else {
+printf("Что-то работает не так. \n");
+}
 }
