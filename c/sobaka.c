@@ -7,5 +7,5 @@ char sobaka_print(){
 }
 
 int main(){
-sobaka_print();
+    sobaka_print();
 }
